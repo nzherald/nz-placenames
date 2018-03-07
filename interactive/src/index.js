@@ -9,7 +9,7 @@ import "./index.css";
 import mapStyle from "./style.json";
 
 
-const GEOJSON = 'http://s3.newsapps.nz/nz-placenames/out.csv'
+const GEOJSON = 'http://insights.nzherald.co.nz/apps/nz-placenames/out.csv'
 
 
 class Root extends Component {
