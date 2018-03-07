@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
 import DeckGL, {ScatterplotLayer} from 'deck.gl';
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL, {NavigationControl} from 'react-map-gl';
 import * as d3 from 'd3';
 
 import "./index.css";
@@ -16,6 +16,7 @@ class Root extends Component {
   constructor(props) {
     super(props);
     this._hovered = this._hovered.bind(this);
+    this._updateViewport = this._updateViewport.bind(this);
     this.state = {
       viewport: {
         latitude: -41,
@@ -58,6 +59,16 @@ class Root extends Component {
     
   }
 
+  _updateViewport(v) {
+    v.latitude = Math.min(-34,v.latitude);
+    v.latitude = Math.max(-47,v.latitude);
+    if (v.longitude < 0) {
+      v.longitude = Math.min(-174,v.longitude);
+    } else {
+      v.longitude = Math.max(173,v.longitude);
+    }
+    this.setState({viewport: v})
+  }
 
   render() {
     const {viewport, width, height, data, hovered} = this.state;
@@ -73,7 +84,7 @@ class Root extends Component {
         height={height}
         mapStyle={mapStyle}
         mapboxApiAccessToken='pk.eyJ1IjoibnpoZXJhbGQiLCJhIjoiSVBPNHM0cyJ9.PDW_j3xU8w-wTnKCpnshPg'
-        onViewportChange={v => this.setState({viewport: v})}
+        onViewportChange={this._updateViewport}
         minZoom={4}
         maxZoom={14}
       >
@@ -97,6 +108,9 @@ class Root extends Component {
             })
           ]}
         />
+      <div style={{position: 'absolute', right: 0}}>
+        <NavigationControl onViewportChange={this._updateViewport} />
+      </div>
       </ReactMapGL>
     </div>
     );
