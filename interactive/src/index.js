@@ -19,7 +19,7 @@ class Root extends Component {
     this._updateViewport = this._updateViewport.bind(this);
     this.state = {
       viewport: {
-        latitude: -41,
+        latitude: -41.1,
         longitude: 175,
         zoom: 4,
         bearing: 0,
