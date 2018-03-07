@@ -45,3 +45,12 @@ svg {
   fill: none;
   pointer-events: all;
 }
+
+.tooltip.red {
+  background-color: rgba(255,80,40,0.8);
+  color: white;
+}
+.tooltip.blue {
+  background-color: rgba(40,80,255,0.8);
+  color: white;
+}

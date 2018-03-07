@@ -1,6 +1,6 @@
 {
   "name": "placenames",
-  "homepage": "http://s3.newsapps.nz/nz-placenames",
+  "homepage": "http://s3.newsapps.nz/nz-placenames/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

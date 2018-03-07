@@ -9,7 +9,7 @@ import "./index.css";
 import mapStyle from "./style.json";
 
 
-const GEOJSON = 'out.csv'
+const GEOJSON = 'http://s3.newsapps.nz/nz-placenames/out.csv'
 
 
 class Root extends Component {
@@ -20,7 +20,7 @@ class Root extends Component {
       viewport: {
         latitude: -41,
         longitude: 175,
-        zoom: 4.5,
+        zoom: 4,
         bearing: 0,
         pitch: 0
       },
@@ -44,8 +44,8 @@ class Root extends Component {
 
   _resize() {
     this.setState({
-      width: Math.min(window.innerWidth, 800),
-      height: window.innerHeight * 0.9
+      width: Math.min(window.innerWidth, 960),
+      height: Math.min(window.innerHeight * 0.8, 500)
     });
   }
 
@@ -61,11 +61,12 @@ class Root extends Component {
 
   render() {
     const {viewport, width, height, data, hovered} = this.state;
-    console.log(viewport.zoom)
 
     return (
       <div>
-        <div className="tooltip" style={{visibility: hovered ? "visible" : "hidden"}}>{hovered && hovered.name}</div>
+        <div className={"tooltip" + (hovered && hovered.reo === '0' ? " blue" : " red") }
+          style= {{visibility: (hovered ? "visible" : "hidden")}}>
+            {hovered && hovered.name}</div>
       <ReactMapGL
         {...viewport}
         width={width}
@@ -74,6 +75,7 @@ class Root extends Component {
         mapboxApiAccessToken='pk.eyJ1IjoibnpoZXJhbGQiLCJhIjoiSVBPNHM0cyJ9.PDW_j3xU8w-wTnKCpnshPg'
         onViewportChange={v => this.setState({viewport: v})}
         minZoom={4}
+        maxZoom={14}
       >
         <DeckGL
           {...viewport}
@@ -101,4 +103,4 @@ class Root extends Component {
   }
 }
 
-render(<Root />, document.body.appendChild(document.createElement('div')));
+render(<Root />, document.getElementById('root'));
