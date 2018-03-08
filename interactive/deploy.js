@@ -22,7 +22,7 @@ const io = args => {
 
 const seqExec = args => {
   process.exec(`aws --region ${env.AWS_REGION} s3 cp build/ ${env.AWS_S3_PATH} \
-  --acl=public-read --recursive ${args[0]} --dryrun`, io(args.slice(1)))
+  --acl=public-read --recursive ${args[0]}`, io(args.slice(1)))
 }
 
 seqExec(["--cache-control max-age=2592000,public --exclude=* --include=**/main.* --include=out.csv",

@@ -7,8 +7,8 @@ import { csv } from 'd3-fetch';
 import "./index.css";
 import mapStyle from "./style.json";
 
-
-const GEOJSON = 'out.csv'
+console.log(process.env.PUBLIC_URL)
+const GEOJSON = `${process.env.NODE_ENV==='production' ? process.env.PUBLIC_URL + '/' : ""}out.csv`
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOXACCESSTOKEN;
 
 
