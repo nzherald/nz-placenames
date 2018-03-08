@@ -1,5 +1,7 @@
 # New Zealand place names interactive
 
+http://insights.nzherald.co.nz/article/our-place-names/
+
 This is a small app that makes some of the work done https://github.com/TeHikuMedia/nga-kupu interative.
 
 ## Data processing
