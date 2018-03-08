@@ -1,50 +1,21 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+margin: 0;
+padding: 0;
+font-family: sans-serif;
 }
 
-.hiddenCanvas{
-			display: none;
-		}
-
-		div.tooltip {
-			position: absolute;        
-			display: inline-block;
-			padding: 10px;
-			font-family: 'Open Sans' sans-serif;
-			color: #000;
-			background-color: #fff;
-			border: 1px solid #999;
-			border-radius: 2px;
-		    pointer-events: none;
-			z-index: 1;
-		}
-
-svg {
-  background: #eee;
-}
-
-.sphere {
-  fill: #fff;
-}
-
-.land {
-  fill: #000;
-}
-
-.boundary {
-  fill: none;
-  stroke: #fff;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  vector-effect: non-scaling-stroke;
-}
-
-.overlay {
-  fill: none;
-  pointer-events: all;
-}
+div.tooltip {
+  position: absolute;        
+  display: inline-block;
+  padding: 10px;
+  font-family: 'Open Sans' sans-serif;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-radius: 2px;
+    pointer-events: none;
+  z-index: 1;
+  }
 
 .tooltip.red {
   background-color: rgba(255,80,40,0.8);
