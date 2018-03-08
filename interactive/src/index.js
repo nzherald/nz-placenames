@@ -3,13 +3,14 @@ import React, {Component} from 'react';
 import {render} from 'react-dom';
 import DeckGL, {ScatterplotLayer} from 'deck.gl';
 import ReactMapGL, {NavigationControl} from 'react-map-gl';
-import * as d3 from 'd3';
+import { csv } from 'd3-fetch';
 
 import "./index.css";
 import mapStyle from "./style.json";
 
 
-const GEOJSON = 'http://insights.nzherald.co.nz/apps/nz-placenames/out.csv'
+const GEOJSON = 'out.csv'
+const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOXACCESSTOKEN;
 
 
 class Root extends Component {
@@ -31,11 +32,11 @@ class Root extends Component {
       hovered: null
     };
 
-    d3.csv(GEOJSON, d => {
+    csv(GEOJSON).then(d => {
+      console.log(d);
       this.setState({data: d.map(p => ({...p, color: p.reo === '0' ? [40,80,255,128] : [255,80,40,128]}))})
 
     })
-      // .then(data => this.setState({data}));
   }
 
   componentDidMount() {
@@ -83,7 +84,7 @@ class Root extends Component {
         width={width}
         height={height}
         mapStyle={mapStyle}
-        mapboxApiAccessToken='pk.eyJ1IjoibnpoZXJhbGQiLCJhIjoiSVBPNHM0cyJ9.PDW_j3xU8w-wTnKCpnshPg'
+        mapboxApiAccessToken={MAPBOX_TOKEN}
         onViewportChange={this._updateViewport}
         minZoom={4}
         maxZoom={14}
