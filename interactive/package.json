@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "d3-fetch": "^1.1.0",
-    "deck.gl": "^5.1.1",
+    "deck.gl": "^5.2.5",
     "dotenv": "^5.0.1",
     "lodash": "^4.17.5",
     "npm-run-all": "^4.1.2",
