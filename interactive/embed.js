@@ -7,6 +7,6 @@ const base = env["PUBLIC_URL"];
 const css = manifest['main.css'];
 const js = manifest['main.js'];
 
-fs.writeFileSync('build/embed.js', `@import url("${base}${js}")`);
+fs.writeFileSync('build/embed.js', `$.getScript("${base}${js}")`);
 fs.writeFileSync('build/embed.css', `@import url("${base}${css}")`);
 
